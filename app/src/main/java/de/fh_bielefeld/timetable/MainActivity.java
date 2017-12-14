@@ -20,13 +20,20 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import de.fh_bielefeld.timetable.calendar;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ArrayList<calendar> dataList = new ArrayList<calendar>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        createElement("Test", 1, 0.0, 1.0, "testart", "D445", "Lajios", "Laj");
+        createElement("Holzmichel", 1, 0.0, 1.0, "holz", "D445", "Lajios", "Laj");
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -115,4 +122,11 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    //calendar(String name, int day, double startT, double endT, String art, String raum, String doz, String kuer)
+    public void createElement(String Name, int day, double startT, double endT, String art, String raum, String doz, String kuer){
+        calendar c = new calendar(Name, day, startT, endT, art, raum, doz, kuer);
+        dataList.add(c);
+    }
+
 }

@@ -8,24 +8,6 @@ import java.util.Date;
 
 public class calendar {
 
-	private calendar prev = null;
-
-    public calendar getPrev() {
-        return prev;
-    }
-
-    public void setPrev(calendar prev) {
-        this.prev = prev;
-    }
-
-    public calendar getNext() {
-        return next;
-    }
-
-    public void setNext(calendar next) {
-        this.next = next;
-    }
-
     public String getName() {
         return name;
     }
@@ -90,9 +72,7 @@ public class calendar {
         this.kuer = kuer;
     }
 
-    public calendar(calendar prev, calendar next, String name, int day, double startT, double endT, String art, String raum, String doz, String kuer) {
-        this.prev = prev;
-        this.next = next;
+    public calendar(String name, int day, double startT, double endT, String art, String raum, String doz, String kuer) {
         this.name = name;
         this.day = day;
         this.startT = startT;
@@ -103,7 +83,6 @@ public class calendar {
         this.kuer = kuer;
     }
 
-    private calendar next = null;
 	private String name = null;
 	private int day = 0;
 	private double startT = 0.0;
