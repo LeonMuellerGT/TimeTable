@@ -13,8 +13,11 @@ import de.fh_bielefeld.timetable.R;
 import de.fh_bielefeld.timetable.calendar;
 
 public class calendarAdapter extends ArrayAdapter<calendar> {
-    public calendarAdapter(Context context, ArrayList<calendar> users) {
+    int day;
+
+    public calendarAdapter(Context context, ArrayList<calendar> users, int d) {
         super(context, 0, users);
+        day = d;
     }
 
     @Override
@@ -22,24 +25,27 @@ public class calendarAdapter extends ArrayAdapter<calendar> {
         // Get the data item for this position
         calendar c = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
+        // Lookup view for data population
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.calendaritem, parent, false);
         }
-        // Lookup view for data population
-        TextView fach = (TextView) convertView.findViewById(R.id.fach);
-        TextView raum = (TextView) convertView.findViewById(R.id.raum);
-        TextView doz = (TextView) convertView.findViewById(R.id.doz);
-        TextView start = (TextView) convertView.findViewById(R.id.startT);
-        TextView end = (TextView) convertView.findViewById(R.id.endT);
-        TextView kuer = (TextView) convertView.findViewById(R.id.kuer);
-        // Populate the data into the template view using the data object
-        fach.setText(c.getName());
-        raum.setText(c.getRaum());
-        doz.setText(c.getDoz());
-        start.setText(String.valueOf(c.getStartT()));
-        end.setText(String.valueOf(c.getEndT()));
-        kuer.setText(c.getKuer());
 
+        if(c.getDay() == day) {
+            TextView fach = (TextView) convertView.findViewById(R.id.fach);
+            TextView raum = (TextView) convertView.findViewById(R.id.raum);
+            TextView doz = (TextView) convertView.findViewById(R.id.doz);
+            TextView start = (TextView) convertView.findViewById(R.id.startT);
+            TextView end = (TextView) convertView.findViewById(R.id.endT);
+            TextView kuer = (TextView) convertView.findViewById(R.id.kuer);
+            // Populate the data into the template view using the data object
+            fach.setText(c.getName());
+            raum.setText(c.getRaum());
+            doz.setText(c.getDoz());
+            start.setText(String.valueOf(c.getStartT()));
+            end.setText(String.valueOf(c.getEndT()));
+            kuer.setText(c.getKuer());
+        }
         // Return the completed view to render on screen
         return convertView;
     }

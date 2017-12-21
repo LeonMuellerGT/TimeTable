@@ -12,6 +12,9 @@
             android:id="@+id/nav_input"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/input" />
+        <item
+            android:id="@+id/nav_import"
+            android:title="Import" />
     </group>
 
 </menu>

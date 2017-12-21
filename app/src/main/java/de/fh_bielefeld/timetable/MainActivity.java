@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new Table();
         } else if (id == R.id.nav_input) {
             fragment = new Input();
+        } else if (id == R.id.nav_input) {
+            fragment = new Import();
         }
 
         ft.replace(R.id.container, fragment);
