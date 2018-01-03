@@ -1,17 +1,22 @@
 package de.fh_bielefeld.timetable;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,10 +32,15 @@ public class Table extends Fragment {
     ListView donnerstag;
     ListView freitag;
 
+    ArrayList<calendar> dataMontag = new ArrayList<calendar>();
+    ArrayList<calendar> dataDienstag = new ArrayList<calendar>();
+    ArrayList<calendar> dataMittwoch = new ArrayList<calendar>();
+    ArrayList<calendar> dataDonnerstag = new ArrayList<calendar>();
+    ArrayList<calendar> dataFreitag = new ArrayList<calendar>();
+
     public Table() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,53 +49,88 @@ public class Table extends Fragment {
 
         final MainActivity activity = (MainActivity) getActivity();
 
-        ArrayList<calendar> dataMontag = new ArrayList<calendar>();
-        ArrayList<calendar> dataDienstag = new ArrayList<calendar>();
-        ArrayList<calendar> dataMittwoch = new ArrayList<calendar>();
-        ArrayList<calendar> dataDonnerstag = new ArrayList<calendar>();
-        ArrayList<calendar> dataFreitag = new ArrayList<calendar>();
+
 
         for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay() == 1){
+            if(activity.dataList.get(i).getDay().equals("Montag")){
                 dataMontag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay() == 2){
+            if(activity.dataList.get(i).getDay().equals("Dienstag")){
                 dataDienstag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay() == 3){
+            if(activity.dataList.get(i).getDay().equals("Mittwoch")){
                 dataMittwoch.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay() == 4){
+            if(activity.dataList.get(i).getDay().equals("Donnerstag")){
                 dataDonnerstag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay() == 5){
+            if(activity.dataList.get(i).getDay().equals("Freitag")){
                 dataFreitag.add(activity.dataList.get(i));
             }
         }
 
         montag = (ListView) view.findViewById(R.id.Montag);
+
+        final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, "Montag");
+
+        montag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                //String item = (String) montag.getItemAtPosition(position);
+                final calendar t = (calendar) montag.getItemAtPosition(position);
+                //Toast.makeText(getContext(),"You selected : " + t.getDay() + t.getName(),Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setMessage("Veranstaltung löschen?");
+                alertDialogBuilder.setPositiveButton("Ja",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if(t.getDay().equals("Montag")){
+                                    dataMontag.remove(position);
+                                    AdapterMontag.notifyDataSetChanged();
+                                }
+                                Toast.makeText(getContext(),"You clicked yes button |"+position+t.getDay(),Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Nein",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //finish();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
         dienstag = (ListView) view.findViewById(R.id.Dienstag);
         mittwoch = (ListView) view.findViewById(R.id.Mittwoch);
         donnerstag = (ListView) view.findViewById(R.id.Donnerstag);
         freitag = (ListView) view.findViewById(R.id.Freitag);
 
-        final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, 1);
-        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, 2);
-        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, 3);
-        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, 4);
-        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, 5);
+        Log.d("Test", "Size: "+activity.dataList.size());
+
+
+        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag");
+        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch");
+        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag");
+        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag");
+
+        Log.d("Test", "Test2");
 
         montag.setAdapter(AdapterMontag);
         dienstag.setAdapter(AdapterDienstag);
@@ -141,5 +186,4 @@ public class Table extends Fragment {
 
         return view;
     }
-
 }

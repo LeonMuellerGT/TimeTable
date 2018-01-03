@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ public class Input extends Fragment {
 
     private EditText fach;
     private EditText raum;
-    private EditText tag;
+    private Spinner tag;
     private EditText start;
     private EditText end;
     private EditText doz;
@@ -41,14 +43,22 @@ public class Input extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_input, container, false);
 
-        Log.d("test","test");
+        Spinner spinner = (Spinner) view.findViewById(R.id.days);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.days, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
         fach = (EditText) view.findViewById(R.id.fachI);
         raum = (EditText) view.findViewById(R.id.raumI);
         doz = (EditText) view.findViewById(R.id.dozI);
         start = (EditText) view.findViewById(R.id.startTI);
         end = (EditText) view.findViewById(R.id.endTI);
-        tag = (EditText) view.findViewById(R.id.dayI);
+        /**tag = (EditText) view.findViewById(R.id.dayI);*/
+        tag = (Spinner) view.findViewById(R.id.days);
 
 
         Button button = (Button)view.findViewById(R.id.add);
@@ -56,10 +66,11 @@ public class Input extends Fragment {
             @Override
             public void onClick(View view) {
 
+                Log.d("test button", tag.getSelectedItem().toString());
                 calendar c = new calendar(fach.getText().toString(),
-                        Integer.valueOf(tag.getText().toString()),
-                        Double.valueOf(start.getText().toString()),
-                        Double.valueOf(end.getText().toString()),
+                        /**tag.getText().toString()*/ tag.getSelectedItem().toString() ,
+                        start.getText().toString(),
+                        end.getText().toString(),
                         "vorlesung",
                         raum.getText().toString(),
                         doz.getText().toString(),

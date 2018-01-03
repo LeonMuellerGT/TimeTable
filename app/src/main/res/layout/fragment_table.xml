@@ -44,29 +44,31 @@
                     android:id="@+id/Montag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/holo_green_dark" />
+                    android:background="@android:color/black" />
 
                 <ListView
                     android:id="@+id/Dienstag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/holo_orange_light" />
+                    android:background="@android:color/black" />
 
                 <ListView
                     android:id="@+id/Mittwoch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/holo_red_dark" />
+                    android:background="@android:color/black" />
 
                 <ListView
                     android:id="@+id/Donnerstag"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
 
                 <ListView
                     android:id="@+id/Freitag"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
 
             </FrameLayout>
         </LinearLayout>

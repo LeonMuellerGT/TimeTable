@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,7 +19,13 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import de.fh_bielefeld.timetable.calendar;
 
@@ -32,8 +39,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        createElement("Test", 1, 0.0, 1.0, "testart", "D445", "Lajios", "Laj");
-        createElement("Holzmichel", 1, 0.0, 1.0, "holz", "D445", "Lajios", "Laj");
+        readCSVData();
+
+        Log.d("Test", dataList.get(0).getDay());
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -64,6 +72,35 @@ public class MainActivity extends AppCompatActivity
         fragment = new Table();
         ft.replace(R.id.container, fragment);
         ft.commit();
+    }
+
+    private void readCSVData() {
+        InputStream is = getResources().openRawResource(R.raw.ini_ws17);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(is, Charset.forName("UTF-8"))
+        );
+
+        String line = "";
+        try { //Step over headers
+            reader.readLine();
+
+
+            while((line = reader.readLine()) != null){
+                // Split by ';'
+                String[] tokens = line.split(";");
+
+                //Read data
+                //calendar(String name, int day, double startT, double endT, String art, String raum, String doz, String kuer) {
+                calendar sample = new calendar(tokens[1], tokens[2], tokens[3], tokens[4], "", tokens[5], tokens[6], tokens[7]);
+
+                dataList.add(sample);
+
+                Log.d("MyActivity", "Just created: "+sample);
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error fehler beim einlesen"+line,e);
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -112,8 +149,6 @@ public class MainActivity extends AppCompatActivity
             fragment = new Table();
         } else if (id == R.id.nav_input) {
             fragment = new Input();
-        } else if (id == R.id.nav_input) {
-            fragment = new Import();
         }
 
         ft.replace(R.id.container, fragment);
@@ -126,7 +161,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     //calendar(String name, int day, double startT, double endT, String art, String raum, String doz, String kuer)
-    public void createElement(String Name, int day, double startT, double endT, String art, String raum, String doz, String kuer){
+    public void createElement(String Name, String day, String startT, String endT, String art, String raum, String doz, String kuer){
         calendar c = new calendar(Name, day, startT, endT, art, raum, doz, kuer);
         dataList.add(c);
     }

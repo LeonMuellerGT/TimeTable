@@ -16,27 +16,27 @@ public class calendar {
         this.name = name;
     }
 
-    public int getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
 
-    public double getStartT() {
+    public String getStartT() {
         return startT;
     }
 
-    public void setStartT(double startT) {
+    public void setStartT(String startT) {
         this.startT = startT;
     }
 
-    public double getEndT() {
+    public String getEndT() {
         return endT;
     }
 
-    public void setEndT(double endT) {
+    public void setEndT(String endT) {
         this.endT = endT;
     }
 
@@ -72,7 +72,7 @@ public class calendar {
         this.kuer = kuer;
     }
 
-    public calendar(String name, int day, double startT, double endT, String art, String raum, String doz, String kuer) {
+    public calendar(String name, String day, String startT, String endT, String art, String raum, String doz, String kuer) {
         this.name = name;
         this.day = day;
         this.startT = startT;
@@ -84,9 +84,9 @@ public class calendar {
     }
 
 	private String name = null;
-	private int day = 0;
-	private double startT = 0.0;
-	private double endT = 0.0;
+	private String day = null;
+	private String startT = null;
+	private String endT = null;
 	private String art = null;
 	private String raum = null;
 	private String doz = null;
