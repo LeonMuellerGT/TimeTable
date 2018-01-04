@@ -10,6 +10,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="callendar">Calender</string>
     <string name="input">Input</string>
+    <string name="eventDeleted">Veranstaltung erfolgreich gelöscht</string>
+    <string name="askDelete">Veranstaltung löschen?</string>
+    <string name="ja">Ja</string>
+    <string name="nein">Nein</string>
+    <string name="montag">Montag</string>
+    <string name="dienstag">Dienstag</string>
+    <string name="mittwoch">Mittwoch</string>
+    <string name="donnerstag">Donnerstag</string>
+    <string name="freitag">Freitag</string>
 
     <string-array name="days">
         <item>Montag</item>
