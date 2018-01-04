@@ -1,15 +1,12 @@
 package de.fh_bielefeld.timetable;
 
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,18 +82,24 @@ public class Table extends Fragment {
         }
 
         montag = (ListView) view.findViewById(R.id.Montag);
+        dienstag = (ListView) view.findViewById(R.id.Dienstag);
+        mittwoch = (ListView) view.findViewById(R.id.Mittwoch);
+        donnerstag = (ListView) view.findViewById(R.id.Donnerstag);
+        freitag = (ListView) view.findViewById(R.id.Freitag);
 
         final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, "Montag");
+        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag");
+        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch");
+        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag");
+        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag");
 
         montag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                //String item = (String) montag.getItemAtPosition(position);
                 final calendar t = (calendar) montag.getItemAtPosition(position);
-                //Toast.makeText(getContext(),"You selected : " + t.getDay() + t.getName(),Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
-                alertDialogBuilder.setMessage("Veranstaltung löschen?");
-                alertDialogBuilder.setPositiveButton("Ja",
+                alertDialogBuilder.setMessage(R.string.askDelete);
+                alertDialogBuilder.setPositiveButton(R.string.ja,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
@@ -104,37 +107,131 @@ public class Table extends Fragment {
                                     dataMontag.remove(position);
                                     AdapterMontag.notifyDataSetChanged();
                                 }
-                                Toast.makeText(getContext(),"You clicked yes button |"+position+t.getDay(),Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
                         });
 
-                alertDialogBuilder.setNegativeButton("Nein",new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton(R.string.nein,new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //finish();
-                    }
+                    public void onClick(DialogInterface dialog, int which) {}
                 });
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
-
         });
 
-        dienstag = (ListView) view.findViewById(R.id.Dienstag);
-        mittwoch = (ListView) view.findViewById(R.id.Mittwoch);
-        donnerstag = (ListView) view.findViewById(R.id.Donnerstag);
-        freitag = (ListView) view.findViewById(R.id.Freitag);
+        dienstag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                final calendar t = (calendar) dienstag.getItemAtPosition(position);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setMessage(R.string.askDelete);
+                alertDialogBuilder.setPositiveButton(R.string.ja,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if(t.getDay().equals("Dienstag")){
+                                    dataDienstag.remove(position);
+                                    AdapterDienstag.notifyDataSetChanged();
+                                }
+                                Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
+                            }
+                        });
 
-        Log.d("Test", "Size: "+activity.dataList.size());
+                alertDialogBuilder.setNegativeButton(R.string.nein,new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                });
 
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
 
-        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag");
-        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch");
-        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag");
-        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag");
+        mittwoch.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                final calendar t = (calendar) mittwoch.getItemAtPosition(position);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setMessage(R.string.askDelete);
+                alertDialogBuilder.setPositiveButton(R.string.ja,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if(t.getDay().equals("Mittwoch")){
+                                    dataMittwoch.remove(position);
+                                    AdapterMittwoch.notifyDataSetChanged();
+                                }
+                                Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
+                            }
+                        });
 
-        Log.d("Test", "Test2");
+                alertDialogBuilder.setNegativeButton(R.string.nein,new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        donnerstag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                final calendar t = (calendar) donnerstag.getItemAtPosition(position);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setMessage(R.string.askDelete);
+                alertDialogBuilder.setPositiveButton(R.string.ja,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if(t.getDay().equals("Donnerstag")){
+                                    dataDonnerstag.remove(position);
+                                    AdapterDonnerstag.notifyDataSetChanged();
+                                }
+                                Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton(R.string.nein,new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        freitag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                final calendar t = (calendar) freitag.getItemAtPosition(position);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setMessage(R.string.askDelete);
+                alertDialogBuilder.setPositiveButton(R.string.ja,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if(t.getDay().equals("Freitag")){
+                                    dataFreitag.remove(position);
+                                    AdapterFreitag.notifyDataSetChanged();
+                                }
+                                Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton(R.string.nein,new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
 
         montag.setAdapter(AdapterMontag);
         dienstag.setAdapter(AdapterDienstag);
@@ -189,24 +286,31 @@ public class Table extends Fragment {
         });
 
         return view;
-
-        mViewPager.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener(){
-                    @Override
-                    public void onPageSelected(int position) {
-                        getActionBar().setSelectedNavigationItem(position);
-                    }
-
-                });
-        actionBar.newTab()
-                .setTabListener(new ActionBar.TabListener(){
-                    public void onTabSelected(ActionBar.Tab tab,
-                                              FragmentTransaction ft){
-                        mViewPager.setCurrentItem(tab.getPosition());
-                    }
-                });
-
     }
 
+    public ArrayList<calendar> mergeLists(ArrayList<calendar> mon, ArrayList<calendar> die, ArrayList<calendar> mit, ArrayList<calendar> don, ArrayList<calendar> fre){
+        ArrayList<calendar> tmp = new ArrayList<calendar>();
 
+        for(int i = 0; i < mon.size(); i++){
+            tmp.add(mon.get(i));
+        }
+
+        for(int i = 0; i < die.size(); i++){
+            tmp.add(die.get(i));
+        }
+
+        for(int i = 0; i < mit.size(); i++){
+            tmp.add(mit.get(i));
+        }
+
+        for(int i = 0; i < mon.size(); i++){
+            tmp.add(mit.get(i));
+        }
+
+        for(int i = 0; i < mon.size(); i++){
+            tmp.add(mit.get(i));
+        }
+
+        return tmp;
+    }
 }
