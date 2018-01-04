@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -129,6 +130,15 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Fragment fragment;
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+            fragment = new Settings();
+
+            ft.replace(R.id.container, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
+
             return true;
         }
 

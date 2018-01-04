@@ -1,6 +1,7 @@
 package de.fh_bielefeld.timetable;
 
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -50,8 +51,6 @@ public class Table extends Fragment {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
         final MainActivity activity = (MainActivity) getActivity();
-
-
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Montag")){
@@ -288,23 +287,6 @@ public class Table extends Fragment {
         });
 
         return view;
-
-        mViewPager.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener(){
-                    @Override
-                    public void onPageSelected(int position) {
-                        getActionBar().setSelectedNavigationItem(position);
-                    }
-
-                });
-        actionBar.newTab()
-                .setTabListener(new ActionBar.TabListener(){
-                    public void onTabSelected(ActionBar.Tab tab,
-                                              FragmentTransaction ft){
-                        mViewPager.setCurrentItem(tab.getPosition());
-                    }
-                });
-
     }
 
     public ArrayList<calendar> mergeLists(ArrayList<calendar> mon, ArrayList<calendar> die, ArrayList<calendar> mit, ArrayList<calendar> don, ArrayList<calendar> fre){

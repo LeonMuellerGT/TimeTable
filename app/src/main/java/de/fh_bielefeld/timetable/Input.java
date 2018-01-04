@@ -25,8 +25,10 @@ public class Input extends Fragment {
     private EditText fach;
     private EditText raum;
     private Spinner tag;
-    private EditText start;
-    private EditText end;
+    private EditText start1;
+    private EditText start2;
+    private EditText end1;
+    private EditText end2;
     private EditText doz;
 
     public Input() {
@@ -55,22 +57,25 @@ public class Input extends Fragment {
         fach = (EditText) view.findViewById(R.id.fachI);
         raum = (EditText) view.findViewById(R.id.raumI);
         doz = (EditText) view.findViewById(R.id.dozI);
-        start = (EditText) view.findViewById(R.id.startTI);
-        end = (EditText) view.findViewById(R.id.endTI);
-        /**tag = (EditText) view.findViewById(R.id.dayI);*/
+        start1 = (EditText) view.findViewById(R.id.startTI1);
+        start2 = (EditText) view.findViewById(R.id.startTI2);
+        end1 = (EditText) view.findViewById(R.id.endTI1);
+        end2 = (EditText) view.findViewById(R.id.endTI2);
         tag = (Spinner) view.findViewById(R.id.days);
-
 
         Button button = (Button)view.findViewById(R.id.add);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                String start = start1.getText().toString() + ":" + start2.getText().toString();
+                String end = end1.getText().toString() + ":" + end2.getText().toString();
+
                 Log.d("test button", tag.getSelectedItem().toString());
                 calendar c = new calendar(fach.getText().toString(),
                         /**tag.getText().toString()*/ tag.getSelectedItem().toString() ,
-                        start.getText().toString(),
-                        end.getText().toString(),
+                        start,
+                        end,
                         "vorlesung",
                         raum.getText().toString(),
                         doz.getText().toString(),
