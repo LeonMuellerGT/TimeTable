@@ -1,12 +1,15 @@
 package de.fh_bielefeld.timetable;
 
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -115,6 +118,7 @@ public class Table extends Fragment {
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
+
         });
 
         dienstag = (ListView) view.findViewById(R.id.Dienstag);
@@ -185,5 +189,24 @@ public class Table extends Fragment {
         });
 
         return view;
+
+        mViewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener(){
+                    @Override
+                    public void onPageSelected(int position) {
+                        getActionBar().setSelectedNavigationItem(position);
+                    }
+
+                });
+        actionBar.newTab()
+                .setTabListener(new ActionBar.TabListener(){
+                    public void onTabSelected(ActionBar.Tab tab,
+                                              FragmentTransaction ft){
+                        mViewPager.setCurrentItem(tab.getPosition());
+                    }
+                });
+
     }
+
+
 }
