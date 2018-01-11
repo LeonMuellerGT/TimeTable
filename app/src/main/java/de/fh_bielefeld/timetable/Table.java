@@ -107,6 +107,7 @@ public class Table extends Fragment {
                                 if(t.getDay().equals("Montag")){
                                     dataMontag.remove(position);
                                     AdapterMontag.notifyDataSetChanged();
+                                    activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -135,6 +136,7 @@ public class Table extends Fragment {
                                 if(t.getDay().equals("Dienstag")){
                                     dataDienstag.remove(position);
                                     AdapterDienstag.notifyDataSetChanged();
+                                    activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -163,6 +165,7 @@ public class Table extends Fragment {
                                 if(t.getDay().equals("Mittwoch")){
                                     dataMittwoch.remove(position);
                                     AdapterMittwoch.notifyDataSetChanged();
+                                    activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -191,6 +194,7 @@ public class Table extends Fragment {
                                 if(t.getDay().equals("Donnerstag")){
                                     dataDonnerstag.remove(position);
                                     AdapterDonnerstag.notifyDataSetChanged();
+                                    activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -219,6 +223,7 @@ public class Table extends Fragment {
                                 if(t.getDay().equals("Freitag")){
                                     dataFreitag.remove(position);
                                     AdapterFreitag.notifyDataSetChanged();
+                                    activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
