@@ -309,12 +309,12 @@ public class Table extends Fragment {
             tmp.add(mit.get(i));
         }
 
-        for(int i = 0; i < mon.size(); i++){
-            tmp.add(mit.get(i));
+        for(int i = 0; i < don.size(); i++){
+            tmp.add(don.get(i));
         }
 
-        for(int i = 0; i < mon.size(); i++){
-            tmp.add(mit.get(i));
+        for(int i = 0; i < fre.size(); i++){
+            tmp.add(fre.get(i));
         }
 
         return tmp;
