@@ -19,8 +19,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -43,6 +49,8 @@ public class MainActivity extends AppCompatActivity
         readCSVData();
 
         Log.d("Test", dataList.get(0).getDay());
+
+
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -75,11 +83,37 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
+
+
+
     private void readCSVData() {
-        InputStream is = getResources().openRawResource(R.raw.ini_ws17);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(is, Charset.forName("UTF-8"))
-        );
+        File tempF = new File(getFilesDir().toString(),"csvTable.csv");
+        BufferedReader reader = null;
+        if(tempF.exists())
+        {
+            FileInputStream fis = null;
+            try {
+                fis = openFileInput(FILE_NAME);
+                InputStreamReader isr = new InputStreamReader(fis);
+                BufferedReader br = new BufferedReader(isr);
+                reader = br;
+                Toast.makeText(this,"Lade Intern! ",Toast.LENGTH_LONG).show();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        else{
+
+            InputStream is = getResources().openRawResource(R.raw.ini_ws17);
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(is, Charset.forName("UTF-8"))
+            );
+            reader = br;
+            Toast.makeText(this,"Lade Default!",Toast.LENGTH_LONG).show();
+        }
+
 
         String line = "";
         try { //Step over headers
@@ -92,7 +126,7 @@ public class MainActivity extends AppCompatActivity
 
                 //Read data
                 //calendar(String name, int day, double startT, double endT, String art, String raum, String doz, String kuer) {
-                calendar sample = new calendar(tokens[1], tokens[2], tokens[3], tokens[4], "", tokens[5], tokens[6], tokens[7]);
+                calendar sample = new calendar(tokens[1], tokens[2], tokens[3], tokens[4], tokens[0], tokens[5], tokens[6], tokens[7]);
 
                 dataList.add(sample);
 
@@ -102,7 +136,63 @@ public class MainActivity extends AppCompatActivity
             Log.wtf("MyActivity","Error fehler beim einlesen"+line,e);
             e.printStackTrace();
         }
+        saveCSV();
     }
+
+    private static final String FILE_NAME = "csvTable.csv";
+
+    private void saveCSV() {
+        String FILE_HEADER = "Semester;Name;Tag;Beginn;Ende;Raum;Dozent;Kürzel";
+        String fertig = "";
+        fertig = fertig+FILE_HEADER;
+
+        for(int i = 0; i < dataList.size();i++) {
+            fertig = fertig+"\n";
+            fertig = fertig+dataList.get(i).getArt();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getName();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getDay();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getStartT();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getEndT();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getRaum();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getDoz();
+            fertig = fertig+";";
+            fertig = fertig+dataList.get(i).getKuer();
+
+            Log.d("Gibmir", dataList.get(0).getDoz());
+        }
+        System.out.println("Habejetzt: \n" + fertig);
+
+        FileOutputStream fos = null;
+
+        try {
+            fos = openFileOutput(FILE_NAME,MODE_PRIVATE);
+            fos.write(fertig.getBytes());
+            //Toast.makeText(this,"Saved to "+getFilesDir()+"/"+FILE_NAME,Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(fos != null){
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
+
+
 
     @Override
     public void onBackPressed() {
