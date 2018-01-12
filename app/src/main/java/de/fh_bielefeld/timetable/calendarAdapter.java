@@ -2,6 +2,7 @@ package de.fh_bielefeld.timetable;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.logging.LoggingMXBean;
@@ -19,6 +21,49 @@ import de.fh_bielefeld.timetable.calendar;
 
 public class calendarAdapter extends ArrayAdapter<calendar> {
     String day;
+
+    Button b1,b2,b3;
+    LinearLayout ll;
+
+    protected void onCreate(Bundle savedInstanceState){
+        setContentView(R.layout.calendaritem);
+
+        b1=(Button)b1.findViewById(R.id.button_red);
+        b2=(Button)b2.findViewById(R.id.button_blue);
+        b3=(Button)b3.findViewById(R.id.button_green);
+
+        ll=(LinearLayout)ll.findViewById(R.id.bg);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ll.setBackgroundColor(Color.parseColor("#ffcc0000"));
+
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ll.setBackgroundColor(Color.parseColor("#ff0099cc"));
+
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ll.setBackgroundColor(Color.parseColor("#ff669900"));
+
+            }
+        });
+    }
+
+    private void setContentView(int calendaritem) {
+    }
 
     public calendarAdapter(Context context, ArrayList<calendar> users, String d) {
         super(context, 0, users);

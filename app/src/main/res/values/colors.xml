@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorFHBlue">#009bbb</color>
     <color name="test">#cfcfcf</color>
+    <color name="DarkRed">#ffcc0000</color>
+    <color name="DarkBlue">#ff0099cc</color>
+    <color name="DarkGreen">#ff669900</color>
 </resources>
