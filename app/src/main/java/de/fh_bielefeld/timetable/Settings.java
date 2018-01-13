@@ -1,6 +1,7 @@
 package de.fh_bielefeld.timetable;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +17,34 @@ import android.widget.LinearLayout;
 public class Settings extends Fragment {
 
     Button b1,b2,b3;
-    LinearLayout ll;
+    LinearLayout t;
+
+    public void ColorChange() {
+        b1=(Button)b1.findViewById(R.id.button_red);
+        b2=(Button)b2.findViewById(R.id.button_blue);
+        b3=(Button)b3.findViewById(R.id.button_green);
+
+        t=(LinearLayout)t.findViewById(R.id.bg);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                t.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                t.setBackgroundColor(Color.parseColor("#ff0099cc"));
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                t.setBackgroundColor(Color.parseColor("#ff669900"));
+            }
+        });
+    }
 
     public Settings() {
         // Required empty public constructor
