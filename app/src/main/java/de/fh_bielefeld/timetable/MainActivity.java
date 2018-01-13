@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    private void readCSVData() {
+    public void readCSVData() {
         File tempF = new File(getFilesDir().toString(),"csvTable.csv");
         BufferedReader reader = null;
         if(tempF.exists())
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final String FILE_NAME = "csvTable.csv";
 
-    private void saveCSV() {
+    public void saveCSV() {
         String FILE_HEADER = "Semester;Name;Tag;Beginn;Ende;Raum;Dozent;Kürzel";
         String fertig = "";
         fertig = fertig+FILE_HEADER;

@@ -120,6 +120,7 @@ public class Table extends Fragment {
                                     dataMontag.remove(position);
                                     AdapterMontag.notifyDataSetChanged();
                                     activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
+                                    ((MainActivity)getActivity()).saveCSV();
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -149,6 +150,7 @@ public class Table extends Fragment {
                                     dataDienstag.remove(position);
                                     AdapterDienstag.notifyDataSetChanged();
                                     activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
+                                    ((MainActivity)getActivity()).saveCSV();
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -178,6 +180,7 @@ public class Table extends Fragment {
                                     dataMittwoch.remove(position);
                                     AdapterMittwoch.notifyDataSetChanged();
                                     activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
+                                    ((MainActivity)getActivity()).saveCSV();
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -207,6 +210,7 @@ public class Table extends Fragment {
                                     dataDonnerstag.remove(position);
                                     AdapterDonnerstag.notifyDataSetChanged();
                                     activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
+                                    ((MainActivity)getActivity()).saveCSV();
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
@@ -236,6 +240,7 @@ public class Table extends Fragment {
                                     dataFreitag.remove(position);
                                     AdapterFreitag.notifyDataSetChanged();
                                     activity.dataList = mergeLists(dataMontag, dataDienstag, dataMittwoch, dataDonnerstag, dataFreitag);
+                                    ((MainActivity)getActivity()).saveCSV();
                                 }
                                 Toast.makeText(getContext(),R.string.eventDeleted,Toast.LENGTH_LONG).show();
                             }
