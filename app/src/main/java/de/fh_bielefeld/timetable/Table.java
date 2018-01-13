@@ -22,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
@@ -236,6 +238,41 @@ public class Table extends Fragment {
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+            }
+        });
+
+        Collections.sort(dataMontag, new Comparator<calendar>() {
+            @Override
+            public int compare(calendar t1, calendar t2) {
+                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+            }
+        });
+
+        Collections.sort(dataDienstag, new Comparator<calendar>() {
+            @Override
+            public int compare(calendar t1, calendar t2) {
+                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+            }
+        });
+
+        Collections.sort(dataMittwoch, new Comparator<calendar>() {
+            @Override
+            public int compare(calendar t1, calendar t2) {
+                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+            }
+        });
+
+        Collections.sort(dataDonnerstag, new Comparator<calendar>() {
+            @Override
+            public int compare(calendar t1, calendar t2) {
+                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+            }
+        });
+
+        Collections.sort(dataFreitag, new Comparator<calendar>() {
+            @Override
+            public int compare(calendar t1, calendar t2) {
+                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
             }
         });
 
