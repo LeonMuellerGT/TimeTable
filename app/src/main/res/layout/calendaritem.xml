@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/doz"
-                android:layout_width="wrap_content"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView" />
@@ -69,11 +69,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kürzel" />
+                android:text="Kürzel:" />
 
             <TextView
                 android:id="@+id/kuer"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView" />
