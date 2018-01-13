@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,15 @@ public class Table extends Fragment {
         View view = inflater.inflate(R.layout.fragment_table, container, false);
 
         final MainActivity activity = (MainActivity) getActivity();
+
+        /*Spinner spinner = (Spinner) view.findViewById(R.id.SemAuswahl);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.days, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);*/
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Montag")){
