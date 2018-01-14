@@ -22,11 +22,13 @@ import de.fh_bielefeld.timetable.calendar;
 
 public class calendarAdapter extends ArrayAdapter<calendar> {
     String day;
+    int color;
 
 
-    public calendarAdapter(Context context, ArrayList<calendar> users, String d) {
+    public calendarAdapter(Context context, ArrayList<calendar> users, String d, int c) {
         super(context, 0, users);
         day = d;
+        color = c;
         Log.d("Test", "Tag Adapter: "+d);
     }
 
@@ -50,7 +52,7 @@ public class calendarAdapter extends ArrayAdapter<calendar> {
         if(c.getDay().equals(day)) {
             LinearLayout t = (LinearLayout) convertView.findViewById(R.id.bg);
 
-            t.setBackgroundColor(Color.parseColor("#cfcfcf"));
+            t.setBackgroundColor(color);
 
 
 

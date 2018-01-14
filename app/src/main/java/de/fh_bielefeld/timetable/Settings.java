@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.zip.Inflater;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,29 +26,31 @@ public class Settings extends Fragment {
     LinearLayout t;
 
 
-    public void ColorChange() {
-        b1=(Button)b1.findViewById(R.id.button_red);
-        b2=(Button)b2.findViewById(R.id.button_blue);
-        b3=(Button)b3.findViewById(R.id.button_green);
+    public void ColorChange(View v) {
 
-        t=(LinearLayout)t.findViewById(R.id.bg);
+        b1=(Button)v.findViewById(R.id.button_red);
+        b2=(Button)v.findViewById(R.id.button_blue);
+        b3=(Button)v.findViewById(R.id.button_green);
+
+        final MainActivity activity = (MainActivity) getActivity();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                t.setBackgroundColor(Color.parseColor("#ffcc0000"));
+                activity.color = Color.parseColor("#ffcc0000");
+                Log.d("Farbe: ", "rot");
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                t.setBackgroundColor(Color.parseColor("#ff0099cc"));
+                activity.color = Color.parseColor("#ff0099cc");
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                t.setBackgroundColor(Color.parseColor("#ff669900"));
+                activity.color = Color.parseColor("#ff669900");
             }
         });
     }
@@ -62,8 +66,9 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
         final MainActivity activity = (MainActivity) getActivity();
 
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        final View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        ColorChange(view);
 
         defButton = (Button)view.findViewById(R.id.button_default);
         defButton.setOnClickListener(new View.OnClickListener() {

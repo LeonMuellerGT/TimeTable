@@ -100,11 +100,11 @@ public class Table extends Fragment {
         donnerstag = (ListView) view.findViewById(R.id.Donnerstag);
         freitag = (ListView) view.findViewById(R.id.Freitag);
 
-        final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, "Montag");
-        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag");
-        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch");
-        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag");
-        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag");
+        final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, "Montag", activity.color);
+        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag",  activity.color);
+        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch",  activity.color);
+        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag",  activity.color);
+        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag",  activity.color);
 
         montag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package de.fh_bielefeld.timetable;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ArrayList<calendar> dataList = new ArrayList<calendar>();
+
+    int color = Color.parseColor("#cfcfcf");
+
 
 
     @Override
