@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
                 InputStreamReader isr = new InputStreamReader(fis);
                 BufferedReader br = new BufferedReader(isr);
                 reader = br;
-                Toast.makeText(this,"Lade Intern! ",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Lade Intern! ",Toast.LENGTH_SHORT).show();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
                     new InputStreamReader(is, Charset.forName("UTF-8"))
             );
             reader = br;
-            Toast.makeText(this,"Lade Default!",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Lade Default!",Toast.LENGTH_SHORT).show();
         }
 
 
@@ -189,7 +189,16 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void killCSV(){
+        File tempF = new File(getFilesDir().toString(),"csvTable.csv");
+        if(tempF.exists())
+        {
+            tempF.delete();
+            dataList.clear();
+            Log.d("DeleteCheck", "File deleted: " + tempF );
+        }
 
+    }
 
 
 
