@@ -71,7 +71,7 @@ public class Settings extends Fragment {
             public void onClick(View view) {
                 Log.i("DEFAULTTEST","Das ist ein TEST");
 
-                activity.killCSV();
+                activity.killCSV();    //MainActivity Methode aufgerufen
                 activity.readCSVData();
 
                 //Toast.makeText(getContext(),"Default wurde geladen! ",Toast.LENGTH_SHORT).show();
