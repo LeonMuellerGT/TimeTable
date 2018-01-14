@@ -55,44 +55,16 @@ public class Table extends Fragment {
 
         final MainActivity activity = (MainActivity) getActivity();
 
-        /*Spinner spinner = (Spinner) view.findViewById(R.id.SemAuswahl);
-
+        final Spinner spinner = (Spinner) view.findViewById(R.id.SemAuswahl);
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.days, android.R.layout.simple_spinner_item);
-
+                R.array.semsester, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
-        spinner.setAdapter(adapter);*/
-
-        for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay().equals("Montag")){
-                dataMontag.add(activity.dataList.get(i));
-            }
-        }
-
-        for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay().equals("Dienstag")){
-                dataDienstag.add(activity.dataList.get(i));
-            }
-        }
-
-        for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay().equals("Mittwoch")){
-                dataMittwoch.add(activity.dataList.get(i));
-            }
-        }
-
-        for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay().equals("Donnerstag")){
-                dataDonnerstag.add(activity.dataList.get(i));
-            }
-        }
-
-        for(int i = 0; i < activity.dataList.size(); i++){
-            if(activity.dataList.get(i).getDay().equals("Freitag")){
-                dataFreitag.add(activity.dataList.get(i));
-            }
-        }
+        fillList(1);
 
         montag = (ListView) view.findViewById(R.id.Montag);
         dienstag = (ListView) view.findViewById(R.id.Dienstag);
@@ -105,6 +77,36 @@ public class Table extends Fragment {
         final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch",  activity.color);
         final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag",  activity.color);
         final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag",  activity.color);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                fillList(Integer.parseInt(spinner.getSelectedItem().toString()));
+
+                AdapterMontag.notifyDataSetChanged();
+                AdapterDienstag.notifyDataSetChanged();
+                AdapterMittwoch.notifyDataSetChanged();
+                AdapterDonnerstag.notifyDataSetChanged();
+                AdapterFreitag.notifyDataSetChanged();
+
+                Log.d("Changed", "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                fillList(Integer.parseInt(spinner.getSelectedItem().toString()));
+
+                Log.d("Changed", "2");
+                AdapterMontag.notifyDataSetChanged();
+                AdapterDienstag.notifyDataSetChanged();
+                AdapterMittwoch.notifyDataSetChanged();
+                AdapterDonnerstag.notifyDataSetChanged();
+                AdapterFreitag.notifyDataSetChanged();
+            }
+
+        });
+
 
         montag.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
@@ -371,4 +373,50 @@ public class Table extends Fragment {
 
         return tmp;
     }
+
+    private void fillList(int sem){
+        MainActivity activity = (MainActivity) getActivity();
+
+        dataMontag.clear();
+        dataDienstag.clear();
+        dataMittwoch.clear();
+        dataDonnerstag.clear();
+        dataFreitag.clear();
+
+        for(int i = 0; i < activity.dataList.size(); i++){
+            if(activity.dataList.get(i).getDay().equals("Montag")){
+                if(sem == activity.dataList.get(i).getSem())
+                    dataMontag.add(activity.dataList.get(i));
+            }
+        }
+
+        for(int i = 0; i < activity.dataList.size(); i++){
+            if(activity.dataList.get(i).getDay().equals("Dienstag")){
+                if(sem == activity.dataList.get(i).getSem())
+                    dataDienstag.add(activity.dataList.get(i));
+            }
+        }
+
+        for(int i = 0; i < activity.dataList.size(); i++){
+            if(activity.dataList.get(i).getDay().equals("Mittwoch")){
+                if(sem == activity.dataList.get(i).getSem())
+                    dataMittwoch.add(activity.dataList.get(i));
+            }
+        }
+
+        for(int i = 0; i < activity.dataList.size(); i++){
+            if(activity.dataList.get(i).getDay().equals("Donnerstag")){
+                if(sem == activity.dataList.get(i).getSem())
+                    dataDonnerstag.add(activity.dataList.get(i));
+            }
+        }
+
+        for(int i = 0; i < activity.dataList.size(); i++){
+            if(activity.dataList.get(i).getDay().equals("Freitag")){
+                if(sem == activity.dataList.get(i).getSem())
+                    dataFreitag.add(activity.dataList.get(i));
+            }
+        }
+    }
+
 }

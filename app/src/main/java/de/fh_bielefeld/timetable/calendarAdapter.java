@@ -52,9 +52,11 @@ public class calendarAdapter extends ArrayAdapter<calendar> {
         if(c.getDay().equals(day)) {
             LinearLayout t = (LinearLayout) convertView.findViewById(R.id.bg);
 
-            t.setBackgroundColor(color);
-
-
+            if(c.getColor() != 0){
+                t.setBackgroundColor(c.getColor());
+            } else {
+                t.setBackgroundColor(color);
+            }
 
             TextView fach = (TextView) convertView.findViewById(R.id.fach);
             TextView raum = (TextView) convertView.findViewById(R.id.raum);

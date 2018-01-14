@@ -66,8 +66,24 @@ public class calendar {
         this.doz = doz;
     }
 
+    public int getSem() {
+        return sem;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
     public String getKuer() {
         return kuer;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public void setSem(int sem) {
+        this.sem = sem;
     }
 
     public void setKuer(String kuer) {
@@ -84,7 +100,8 @@ public class calendar {
         this.doz = doz;
         this.kuer = kuer;
         String[] tmp = art.split(" ");
-        this.sem = Integer.getInteger(tmp[1]);
+        Log.d("test tmp", tmp[1]);
+        this.sem = Integer.valueOf(tmp[1]);
 
         Log.d("sem", art);
     }
@@ -98,5 +115,6 @@ public class calendar {
 	private String doz = null;
 	private String kuer = null;
     private int sem = 0;
+    private int color = 0;
 
 }

@@ -27,4 +27,13 @@
         <item>Donnerstag</item>
         <item>Freitag</item>
     </string-array>
+
+    <string-array name="semsester">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>
