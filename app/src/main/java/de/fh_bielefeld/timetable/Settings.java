@@ -76,6 +76,8 @@ public class Settings extends Fragment {
             public void onClick(View view) {
                 Log.i("DEFAULTTEST","Das ist ein TEST");
 
+                activity.color = Color.parseColor("#cfcfcf");
+
                 activity.killCSV();    //MainActivity Methode aufgerufen
                 activity.readCSVData();
 

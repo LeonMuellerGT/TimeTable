@@ -1,5 +1,7 @@
 package de.fh_bielefeld.timetable;
 
+import android.util.Log;
+
 import java.util.Date;
 
 /**
@@ -81,6 +83,10 @@ public class calendar {
         this.raum = raum;
         this.doz = doz;
         this.kuer = kuer;
+        String[] tmp = art.split(" ");
+        this.sem = Integer.getInteger(tmp[1]);
+
+        Log.d("sem", art);
     }
 
 	private String name = null;
@@ -91,4 +97,6 @@ public class calendar {
 	private String raum = null;
 	private String doz = null;
 	private String kuer = null;
+    private int sem = 0;
+
 }
