@@ -18,58 +18,82 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button_pink"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="false"
-            android:layout_alignTop="@+id/button_blue"
-            android:backgroundTint="@color/colorFHPink"
-            android:text="Pink" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button_blue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:layout_centerHorizontal="false"
-            android:backgroundTint="@color/colorFHBlue"
-            android:text="Blau" />
+            <Button
+                android:id="@+id/button_pink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="false"
+                android:layout_alignTop="@+id/button_blue"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorFHPink"
+                android:text="Pink" />
 
-        <Button
-            android:id="@+id/button_green"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button_pink"
-            android:layout_alignBottom="@+id/button_pink"
-            android:layout_alignParentEnd="false"
-            android:backgroundTint="@color/colorFHGreen"
-            android:text="Gruen" />
+            <Button
+                android:id="@+id/button_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_centerHorizontal="false"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorFHBlue"
+                android:text="Blau" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/button_orange"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorFHOrange"
-            android:text="Orange" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button_violet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorFHViolet"
-            android:text="Lila" />
+            <Button
+                android:id="@+id/button_orange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorFHOrange"
+                android:text="Orange" />
 
-        <Button
-            android:id="@+id/button_gray"
+            <Button
+                android:id="@+id/button_green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/button_pink"
+                android:layout_alignBottom="@+id/button_pink"
+                android:layout_alignParentEnd="false"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorFHGreen"
+                android:text="Gruen" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorFHGray"
-            android:text="Grau" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_violet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorFHViolet"
+                android:text="Lila" />
+
+            <Button
+                android:id="@+id/button_gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorFHGray"
+                android:text="Grau" />
+        </LinearLayout>
 
     </LinearLayout>
 

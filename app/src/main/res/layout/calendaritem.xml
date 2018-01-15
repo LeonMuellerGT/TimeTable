@@ -20,7 +20,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fach:" />
+                android:text="Fach:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/fach"
@@ -29,21 +30,24 @@
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/textView4"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Raum:" />
+                android:text="Raum:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/raum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </TableRow>
 
         <TableRow
@@ -56,28 +60,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dozent:" />
+                android:text="Dozent:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/doz"
                 android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kürzel:" />
+                android:text="Kürzel:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/kuer"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </TableRow>
 
         <TableRow
@@ -90,7 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Anfang:" />
+                android:text="Anfang:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/startT"
@@ -100,21 +109,24 @@
                 android:layout_alignBottom="@+id/textView4"
                 android:layout_toEndOf="@+id/textView4"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ende:" />
+                android:text="Ende:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/endT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </TableRow>
 
     </TableLayout>
