@@ -94,6 +94,41 @@ public class Table extends Fragment {
                 AdapterDonnerstag.notifyDataSetChanged();
                 AdapterFreitag.notifyDataSetChanged();
 
+                Collections.sort(dataMontag, new Comparator<calendar>() {
+                    @Override
+                    public int compare(calendar t1, calendar t2) {
+                        return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+                    }
+                });
+
+                Collections.sort(dataDienstag, new Comparator<calendar>() {
+                    @Override
+                    public int compare(calendar t1, calendar t2) {
+                        return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+                    }
+                });
+
+                Collections.sort(dataMittwoch, new Comparator<calendar>() {
+                    @Override
+                    public int compare(calendar t1, calendar t2) {
+                        return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+                    }
+                });
+
+                Collections.sort(dataDonnerstag, new Comparator<calendar>() {
+                    @Override
+                    public int compare(calendar t1, calendar t2) {
+                        return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+                    }
+                });
+
+                Collections.sort(dataFreitag, new Comparator<calendar>() {
+                    @Override
+                    public int compare(calendar t1, calendar t2) {
+                        return t1.getStartT().compareToIgnoreCase(t2.getStartT());
+                    }
+                });
+
                 Log.d("Changed", "");
             }
 
@@ -363,6 +398,7 @@ public class Table extends Fragment {
 
         for(int i = 0; i < mon.size(); i++){
             tmp.add(mon.get(i));
+
         }
 
         for(int i = 0; i < die.size(); i++){

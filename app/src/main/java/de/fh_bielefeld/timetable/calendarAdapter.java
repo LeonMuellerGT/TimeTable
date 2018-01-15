@@ -15,6 +15,8 @@ import android.widget.Button;
 import de.fh_bielefeld.timetable.Settings;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.logging.LoggingMXBean;
 
 import de.fh_bielefeld.timetable.R;
@@ -79,6 +81,7 @@ public class calendarAdapter extends ArrayAdapter<calendar> {
                 start.setText(c.getStartT());
                 end.setText(c.getEndT());
                 kuer.setText(c.getKuer());
+
             } else{
                 //LinearLayout l = (LinearLayout) convertView.findViewById(R.id.bg);
                 //ViewGroup.LayoutParams p = l.getLayoutParams();
