@@ -9,8 +9,9 @@
 
     <Spinner
         android:id="@+id/SemAuswahl"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="79dp" />
 
     <TabHost
         android:id="@+id/tabHost"
@@ -50,31 +51,31 @@
                     android:id="@+id/Montag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@android:color/white" />
 
                 <ListView
                     android:id="@+id/Dienstag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@android:color/white" />
 
                 <ListView
                     android:id="@+id/Mittwoch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@android:color/white" />
 
                 <ListView
                     android:id="@+id/Donnerstag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@android:color/white" />
 
                 <ListView
                     android:id="@+id/Freitag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@android:color/white" />
 
             </FrameLayout>
         </LinearLayout>
@@ -89,5 +90,14 @@
         android:cropToPadding="false"
         app:backgroundTint="@color/colorFHBlue"
         app:srcCompat="@mipmap/ic_plus" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:text="Semester:"
+        android:textSize="15sp" />
 
 </FrameLayout>

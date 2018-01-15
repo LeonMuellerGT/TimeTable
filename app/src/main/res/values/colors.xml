@@ -8,4 +8,9 @@
     <color name="DarkRed">#ffcc0000</color>
     <color name="DarkBlue">#ff0099cc</color>
     <color name="DarkGreen">#ff669900</color>
+    <color name="colorFHOrange">#e98300</color>
+    <color name="colorFHPink">#c50084</color>
+    <color name="colorFHViolet">#722ea5</color>
+    <color name="colorFHGreen">#a2ad00</color>
+    <color name="colorFHGray">#616365</color>
 </resources>
