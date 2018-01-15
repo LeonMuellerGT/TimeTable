@@ -36,4 +36,10 @@
         <item>5</item>
         <item>6</item>
     </string-array>
+
+    <string-array name="studien">
+        <item>INI</item>
+        <item>ELE</item>
+        <item>RGE</item>
+    </string-array>
 </resources>

@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity
 
     int color = Color.parseColor("#cfcfcf");
 
+    int sem =1;
+
 
 
     @Override

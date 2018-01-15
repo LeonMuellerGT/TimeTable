@@ -64,7 +64,9 @@ public class Table extends Fragment {
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        fillList(1);
+        activity.sem = Integer.valueOf(spinner.getSelectedItem().toString());
+
+        fillList(activity.sem);
 
         montag = (ListView) view.findViewById(R.id.Montag);
         dienstag = (ListView) view.findViewById(R.id.Dienstag);
@@ -72,17 +74,19 @@ public class Table extends Fragment {
         donnerstag = (ListView) view.findViewById(R.id.Donnerstag);
         freitag = (ListView) view.findViewById(R.id.Freitag);
 
-        final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, "Montag", activity.color);
-        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag",  activity.color);
-        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch",  activity.color);
-        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag",  activity.color);
-        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag",  activity.color);
+        final calendarAdapter AdapterMontag = new calendarAdapter(getActivity(), dataMontag, "Montag", activity.color, activity);
+        final calendarAdapter AdapterDienstag = new calendarAdapter(getActivity(), dataDienstag, "Dienstag",  activity.color, activity);
+        final calendarAdapter AdapterMittwoch = new calendarAdapter(getActivity(), dataMittwoch, "Mittwoch",  activity.color, activity);
+        final calendarAdapter AdapterDonnerstag = new calendarAdapter(getActivity(), dataDonnerstag, "Donnerstag",  activity.color, activity);
+        final calendarAdapter AdapterFreitag = new calendarAdapter(getActivity(), dataFreitag, "Freitag",  activity.color, activity);
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 fillList(Integer.parseInt(spinner.getSelectedItem().toString()));
+
+                activity.sem = Integer.parseInt(spinner.getSelectedItem().toString());
 
                 AdapterMontag.notifyDataSetChanged();
                 AdapterDienstag.notifyDataSetChanged();
@@ -96,6 +100,8 @@ public class Table extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 fillList(Integer.parseInt(spinner.getSelectedItem().toString()));
+
+                activity.sem = Integer.parseInt(spinner.getSelectedItem().toString());
 
                 Log.d("Changed", "2");
                 AdapterMontag.notifyDataSetChanged();
@@ -385,35 +391,35 @@ public class Table extends Fragment {
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Montag")){
-                if(sem == activity.dataList.get(i).getSem())
+                //if(sem == activity.dataList.get(i).getSem())
                     dataMontag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Dienstag")){
-                if(sem == activity.dataList.get(i).getSem())
+               //if(sem == activity.dataList.get(i).getSem())
                     dataDienstag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Mittwoch")){
-                if(sem == activity.dataList.get(i).getSem())
+                //if(sem == activity.dataList.get(i).getSem())
                     dataMittwoch.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Donnerstag")){
-                if(sem == activity.dataList.get(i).getSem())
+                //if(sem == activity.dataList.get(i).getSem())
                     dataDonnerstag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Freitag")){
-                if(sem == activity.dataList.get(i).getSem())
+                //if(sem == activity.dataList.get(i).getSem())
                     dataFreitag.add(activity.dataList.get(i));
             }
         }
