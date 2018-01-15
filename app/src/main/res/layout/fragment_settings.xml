@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorFHViolet"
+                android:backgroundTint="@color/MediumOrchid3"
                 android:text="Lila" />
 
             <Button
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorFHGray"
+                android:backgroundTint="@color/test"
                 android:text="Grau" />
         </LinearLayout>
 

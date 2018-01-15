@@ -84,7 +84,7 @@ public class Settings extends Fragment {
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.color = Color.parseColor("#722ea5");
+                activity.color = Color.parseColor("#b452cd");
                 Log.d("Farbe: ", "lila");
             }
         });
