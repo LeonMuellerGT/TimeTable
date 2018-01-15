@@ -299,40 +299,7 @@ public class Table extends Fragment {
             }
         });
 
-        Collections.sort(dataMontag, new Comparator<calendar>() {
-            @Override
-            public int compare(calendar t1, calendar t2) {
-                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
-            }
-        });
 
-        Collections.sort(dataDienstag, new Comparator<calendar>() {
-            @Override
-            public int compare(calendar t1, calendar t2) {
-                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
-            }
-        });
-
-        Collections.sort(dataMittwoch, new Comparator<calendar>() {
-            @Override
-            public int compare(calendar t1, calendar t2) {
-                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
-            }
-        });
-
-        Collections.sort(dataDonnerstag, new Comparator<calendar>() {
-            @Override
-            public int compare(calendar t1, calendar t2) {
-                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
-            }
-        });
-
-        Collections.sort(dataFreitag, new Comparator<calendar>() {
-            @Override
-            public int compare(calendar t1, calendar t2) {
-                return t1.getStartT().compareToIgnoreCase(t2.getStartT());
-            }
-        });
 
         montag.setAdapter(AdapterMontag);
         dienstag.setAdapter(AdapterDienstag);
