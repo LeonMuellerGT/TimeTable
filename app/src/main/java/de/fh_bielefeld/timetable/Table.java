@@ -344,10 +344,14 @@ public class Table extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //myStringArray1.add("something");
-                //Adapter.add("Clicked");//notifyDataSetChanged();
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //        .setAction("Action", null).show();
+                Fragment fragment;
+                android.support.v4.app.FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
+
+                fragment = new Input();
+
+                ft.replace(R.id.container, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
 
@@ -391,35 +395,30 @@ public class Table extends Fragment {
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Montag")){
-                //if(sem == activity.dataList.get(i).getSem())
                     dataMontag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Dienstag")){
-               //if(sem == activity.dataList.get(i).getSem())
                     dataDienstag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Mittwoch")){
-                //if(sem == activity.dataList.get(i).getSem())
                     dataMittwoch.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Donnerstag")){
-                //if(sem == activity.dataList.get(i).getSem())
                     dataDonnerstag.add(activity.dataList.get(i));
             }
         }
 
         for(int i = 0; i < activity.dataList.size(); i++){
             if(activity.dataList.get(i).getDay().equals("Freitag")){
-                //if(sem == activity.dataList.get(i).getSem())
                     dataFreitag.add(activity.dataList.get(i));
             }
         }

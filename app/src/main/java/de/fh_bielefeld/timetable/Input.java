@@ -110,6 +110,8 @@ public class Input extends Fragment {
                 tag.setSelection(0);
                 studSpinner.setSelection(0);
                 semSpinner.setSelection(0);
+
+                activity.saveCSV();
             }
         });
 
